@@ -23,6 +23,7 @@ var upload = multer({
 router.get('/', (req, res) => {
    res.render('welcome') 
 })
+
 //Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     Book.find().exec((err, books) => {
@@ -40,6 +41,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
         }
     })
 })
+
 
 router.post('/dashboard', ensureAuthenticated, upload, (req, res) => {
     // console.log(req.body)

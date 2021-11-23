@@ -1,17 +1,60 @@
+// const { default: Moralis } = require("moralis/types");
+
 const serverUrl = "https://dmxq2ygvqugv.usemoralis.com:2053/server";
 const appId = "lDdw0E0PIXVhIinYPibBo7XgZU9YTiLZl2G1F8JM";
-const user = Moralis.User.current();
 
 Moralis.start({ serverUrl, appId });
+document.getElementById("btn-get-stats").onclick = getStats;
+
+
+// Get User Balances
+function getBalances() {
+  const user = Moralis.User.current();
+  if(user) {
+    getUserBalances(user)
+  }
+}
+
+async function getUserBalances(user) {
+  const options = {address: "0x00b25D5cecC40798b59f3bae53d749FCAA2d326E"}
+  const balances = await Moralis.Web3API.account.getTokenBalances(options);
+  const results = balances
+  console.log(results)
+}
+getBalances();
+
+// Get Users
+function getStats() {
+  const user = Moralis.User.current();
+  if (user) {
+    getUserTransactions(user);
+  }
+}
+
+async function getUserTransactions(user) {
+  // create query
+  const query = new Moralis.Query("EthTransactions");
+  query.equalTo("from_address", user.get("ethAddress"));
+
+  // run query
+  const results = await query.find();
+  console.log("user transactions:", results);
+}
+
+// get stats on page load
+getStats();
+
 
 /* Authentication code */
 async function login() {
   let user = Moralis.User.current();
+  const query = new Moralis.Query("EthTransactions");
   if (!user) {
     user = await Moralis.authenticate({ signingMessage: "Log in using Moralis" })
       .then(function (user) {
         console.log("logged in user:", user);
         console.log(user.get("ethAddress"));
+        window.location.href="/dashboard"
       })
       .catch(function (error) {
         console(error);

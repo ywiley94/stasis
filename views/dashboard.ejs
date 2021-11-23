@@ -38,6 +38,10 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+          <button id="btn-login" class="btn btn-secondary">Moralis Metamask Login</button>
+          <button id="btn-logout" class="btn btn-secondary">Logout</button>
+          <a href="/users/logout" class="btn btn-secondary">Logout</a>
+        
       </div>
     </div>
   </nav>
@@ -45,17 +49,18 @@
 <!-- navbar -->
 
 
-
 <div class="mx-auto text-center container bg-black">
+    <button id="btn-get-stats" class="btn btn-primary mt-5">Refresh Stats</button>
     <h1 class="text-center mt-5">Dashboard</h1>
     <h1 class="text-center mt-5">Total Asset Value:</h1>
     <h2 class="text-center mt-5">$5,000</h2>
     <h2 class="text-center mt-5">NFTs</h2>
-    <h2 class="text-center mt-5">$0</h2>
+    <h2 class="text-center mt-5"></h2>
+    <button id="buyCrypto" class="btn btn-primary">Buy Crypto</button>
 
 
 
-      <!-- <% books.forEach((row, index) => { %>
+      <% books.forEach((row, index) => { %>
           <div class="align-middle">
               <p><%= index %></p>
               <p><img src="<%= row.image %>" width="50" class="img-thumbnail" alt=""></p>
@@ -67,7 +72,7 @@
                   <a href="/delete/<%= row._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
               </p>
           </div>
-      <% })%> -->
+      <% })%>
 
       <!-- Start of The Calculator -->
     <div class="container">
@@ -125,12 +130,10 @@
             <button class="btn btn-secondary">Request Payout</button>
         </div>
       </div>
-      <div class="row">
-        <a href="/users/logout" class="btn btn-secondary">Logout</a>
-      </div>
+    
     </div>  
   </div>
     
-    <script src="main.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
