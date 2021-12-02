@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
     <title>Stasis</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbar-fixed/">
@@ -25,21 +23,20 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/feed">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="/dashboard">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled">Friends</a>
+            <a class="nav-link" href="/friends">Friends</a>
           </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-          <button id="btn-login" class="btn btn-secondary">Moralis Metamask Login</button>
-          <button id="btn-logout" class="btn btn-secondary">Logout</button>
+          
           <a href="/users/logout" class="btn btn-secondary">Logout</a>
         
       </div>
@@ -51,13 +48,14 @@
 
 <div class="mx-auto text-center container bg-black">
     <button id="btn-get-stats" class="btn btn-primary mt-5">Refresh Stats</button>
-    <h1 class="text-center mt-5">Dashboard</h1>
-    <h1 class="text-center mt-5">Total Asset Value:</h1>
-    <h2 class="text-center mt-5">$5,000</h2>
-    <h2 class="text-center mt-5">NFTs</h2>
-    <h2 class="text-center mt-5"></h2>
+    <h1 id="profileName" class="text-center mt-5">Profile</h1>
+    <h1 class="text-center mt-5">Asset Balance:</h1>
     <button id="buyCrypto" class="btn btn-primary">Buy Crypto</button>
-
+    <iframe id="myIframe" src="" frameborder="0" width="350" height="650" style="display:none"></iframe>
+    <h2 id="ethBalance" class="text-center mt-5">$5,000</h2>
+    <h2 id="displayNfts" class="text-center mt-5">NFTs</h2>
+    <h2 class="text-center mt-5"></h2>
+    
 
 
       <% books.forEach((row, index) => { %>
@@ -75,64 +73,6 @@
       <% })%>
 
       <!-- Start of The Calculator -->
-    <div class="container">
-      <!-- inputs' -->
-      <div class="mx-auto jumbotron col-xl-4 col-xl-offset-4 col-md-6 col-md-offset-3 p-x-3 p-y-3 col-xs-12 bg-black">
-        <div class="input-group input-group-sm col-xs-12 p-a-0">
-          <input class="col-xs-12 form-control text-xs-right" id="calcscreen" type="text"/>
-        </div>
-        <div class="input-group input-group-lg col-xs-12 p-a-0"> 
-          <input class="form-control text-xs-right" id="numberscreen" type="text"/>
-        </div>
-
-          <!-- buttons -->
-        <div class="col-xs-7 calc__clearpad p-a-0 m-t-2">    
-          <button class="btn btn-danger col-xs-4 numbers" id="ce" type="button">CE</button>
-          <button class="btn btn-danger col-xs-4 numbers" id="c" type="button">C</button>
-          <button class="btn btn-secondary col-xs-4 numbers" id="±" type="button"> ±</button>
-          <button class="btn btn-secondary col-xs-12 numbers" id="ans" type="button"> ANS   </button>
-        </div>
-
-        <div class="col-xs-7 calc__clearpad p-a-0 m-t-2">
-
-        </div>
-        <div class="col-xs-7 calc__numberpad p-a-0">
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="1" type="button">1</button>
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="2" type="button">2</button>
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="3" type="button">3</button>
-          <button class="btn btn-lg btn-secondary col-xs-6 operator" func="+" type="button">+ </button>
-        </div>
-
-        <div class="col-xs-7 calc__clearpad p-a-0 m-t-2">
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="4" type="button">4</button>
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="5" type="button">5</button>
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="6" type="button">6</button>
-          <button class="btn btn-lg btn-secondary col-xs-6 operator" func="-" type="button">- </button>
-        </div>
-
-        <div class="col-xs-7 calc__clearpad p-a-0 m-t-2">
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="7" type="button">7</button>
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="8" type="button">8</button>
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="9" type="button">9</button>
-          <button class="btn btn-lg btn-secondary col-xs-8 numbers" func="0" type="button">0 </button>
-        </div>
-        
-        <div class="col-xs-5 calc__operatorpad p-a-0">    
-          <button class="btn btn-lg btn-secondary col-xs-4 numbers" func="." type="button">.</button>
-          <button class="btn btn-lg btn-secondary col-xs-6 operator" func="%" type="button">% </button>
-          <button class="btn btn-lg btn-secondary col-xs-6 operator" func="*" type="button">* </button>
-          <button class="btn btn-lg btn-secondary btn-lg col-xs-6" id="squareroot" func="√" type="button">√</button>
-          <button class="btn btn-lg btn-primary col-xs-12" id="equals" func="=" type="button"> =</button>
-        </div>
-
-        <div class="mt-4">
-            <button class="btn btn-primary">Add to Pool</button>
-            <button class="btn btn-secondary">Request Payout</button>
-        </div>
-      </div>
-    
-    </div>  
-  </div>
     
     <script type="text/javascript" src="main.js"></script>
 </body>

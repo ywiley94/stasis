@@ -23,6 +23,11 @@ var upload = multer({
 router.get('/', (req, res) => {
    res.render('welcome') 
 })
+// Get Feed
+
+router.get('/feed', (req, res) => {
+    res.render('feed')
+})
 
 //Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
@@ -41,7 +46,13 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
         }
     })
 })
+router.get('/friends', ensureAuthenticated, (req, res) => {
+    res.render('friends')
+})
 
+router.post('/saveNfts', ensureAuthenticated, (req, res) => {
+    console.log(req.body)
+})
 
 router.post('/dashboard', ensureAuthenticated, upload, (req, res) => {
     // console.log(req.body)
